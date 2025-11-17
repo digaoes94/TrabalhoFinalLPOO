@@ -7,21 +7,27 @@ public abstract class Documento {
 	
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	protected long id;
 	// AS CLASSES HERDEIRAS TAMBÉM HERDARÃO OS ID'S
 	
-	private String nome, assunto, descricao;
-
+	@Column(nullable = false) 
+	private String nome;
+	
+	@Column(length = 500) // AUMENTA O TAMANHO PARA POSSÍVEIS DESCRIÇÕES LONGAS
+    private String descricao;
+	
+	private String assunto;
+	
+	public Documento() {		
+	}
+	
+	
 	public Documento(String nome, String assunto, String descricao) {
 		this.nome = nome;
 		this.assunto = assunto;
 		this.descricao = descricao;
 	}
-	
-	public Documento() {
-		
-	}
-	
+
 	public String getNome() {
 		return nome;
 	}

@@ -6,25 +6,22 @@ import jakarta.persistence.*;
 @Table(name = "livro")  
 public class Livro extends DocFisico {
 
-	@Column(name = "autor")
+	@Column(name = "autor", nullable = false)
 	private String autor;
 
+	public Livro() {	
+	}
+	
 	public Livro(String nome, String assunto, String descricao, String localizacao, String autor) {
 		super(nome, assunto, descricao, localizacao);
 		this.autor = autor;
 	}
-	public Livro() {
-		
-	}
+
 	public String getAutor() {
 		return autor;
 	}
 	public void setAutor(String autor) {
 		this.autor = autor;
-	}
-
-	
-	
-	
+	}	
 	
 }

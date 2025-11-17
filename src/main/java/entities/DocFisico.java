@@ -6,17 +6,16 @@ import jakarta.persistence.MappedSuperclass;
 @MappedSuperclass
 
 public class DocFisico extends Documento {
-	
+
 	@Column(name = "local_na_estante")
 	private String localizacao;
+
+	public DocFisico() {
+	}
 
 	public DocFisico(String nome, String assunto, String descricao, String localizacao) {
 		super(nome, assunto, descricao);
 		this.localizacao = localizacao;
-	}
-	
-	public DocFisico() {
-		
 	}
 
 	public String getLocalizacao() {
@@ -27,6 +26,4 @@ public class DocFisico extends Documento {
 		this.localizacao = localizacao;
 	}
 
-	
-	
 }

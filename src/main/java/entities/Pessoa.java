@@ -5,12 +5,16 @@ import jakarta.persistence.*;
 @MappedSuperclass
 public abstract class Pessoa {
 	
-	@Id 
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-	// AS CLASSES HERDEIRAS TAMBÉM HERDARÃO OS ID'S
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected Long id; // 'protected' PARA QUE AS FILHAS TAMBÉM ACESSEM O ID
 
-	protected String nome, cpf, email, celular;
+    @Column(nullable = false)
+    private String nome;
+
+    @Column(name = "cpf_pessoa", unique = true, nullable = false)
+    private String cpf;
+	private String email, celular;
 
 	public Pessoa(String nome, String cpf, String email, String celular) {
 		this.nome = nome;

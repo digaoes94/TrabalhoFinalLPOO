@@ -1,41 +1,39 @@
 package entities;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import jakarta.persistence.*;
 
-@Entity //MARCA COMO UMA ENTIDADE JPA E SERÁ A TABELA PRINCIPAL
-@Table(name = "empréstimo")  
+@Entity // MARCA COMO UMA ENTIDADE JPA E SERÁ A TABELA PRINCIPAL
+@Table(name = "empréstimo")
 
 public class Emprestimo {
-	@Id //CHAVE PRIMÁRIA PARA ESTÁ CLASSE POIS ELA É INDEPENDENTE
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	
-	@Column(name = "cpf_do_mutuario")
+	@Id // CHAVE PRIMÁRIA PARA ESTÁ CLASSE POIS ELA É INDEPENDENTE
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
+	@Column(name = "cpf_do_mutuario", nullable = false)
 	private String cpfMutuario;
-	@Column(name = "inicio_do_emprestimo")
-	private Date inicioEmprestimo;
-	@Column(name = "fim_do_emprestimo")
-	private Date fimEmprestimo;
+	@Column(name = "inicio_do_emprestimo", nullable = false)
+	private LocalDate inicioEmprestimo;
+	@Column(name = "fim_do_emprestimo", nullable = false)
+	private LocalDate fimEmprestimo; // DATA PREVISTA PARA A ENTREGA
 	@Column(name = "data_da_real_devolucao")
-	private Date dataRealDevolucao;
-	@Column(name = "status")
+	private LocalDate dataRealDevolucao; // DATA DEFINITIVA DA ENTREGA
+	@Column(name = "status", nullable = false)
 	private boolean status;
-	
-	public Emprestimo(String cpfMutuario, Date inicioEmprestimo, Date fimEmprestimo, Date dataRealDevolucao,
-			boolean status) {
-		super();
+
+	public Emprestimo() {
+
+	}
+
+	public Emprestimo(String cpfMutuario, LocalDate inicioEmprestimo, LocalDate fimEmprestimo,LocalDate dataRealDevolucao, boolean status) {
 		this.cpfMutuario = cpfMutuario;
 		this.inicioEmprestimo = inicioEmprestimo;
 		this.fimEmprestimo = fimEmprestimo;
 		this.dataRealDevolucao = dataRealDevolucao;
-		this.status = status;
+		this.status = true;
 	}
-	
-	public Emprestimo() {
-		
-	}
-
 	public String getCpfMutuario() {
 		return cpfMutuario;
 	}
@@ -44,27 +42,27 @@ public class Emprestimo {
 		this.cpfMutuario = cpfMutuario;
 	}
 
-	public Date getInicioEmprestimo() {
+	public LocalDate getInicioEmprestimo() {
 		return inicioEmprestimo;
 	}
 
-	public void setInicioEmprestimo(Date inicioEmprestimo) {
+	public void setInicioEmprestimo(LocalDate inicioEmprestimo) {
 		this.inicioEmprestimo = inicioEmprestimo;
 	}
 
-	public Date getFimEmprestimo() {
+	public LocalDate getFimEmprestimo() {
 		return fimEmprestimo;
 	}
 
-	public void setFimEmprestimo(Date fimEmprestimo) {
+	public void setFimEmprestimo(LocalDate fimEmprestimo) {
 		this.fimEmprestimo = fimEmprestimo;
 	}
 
-	public Date getDataRealDevolucao() {
+	public LocalDate getDataRealDevolucao() {
 		return dataRealDevolucao;
 	}
 
-	public void setDataRealDevolucao(Date dataRealDevolucao) {
+	public void setDataRealDevolucao(LocalDate dataRealDevolucao) {
 		this.dataRealDevolucao = dataRealDevolucao;
 	}
 
@@ -75,6 +73,5 @@ public class Emprestimo {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
-	
-	
+
 }

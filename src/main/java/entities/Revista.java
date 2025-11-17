@@ -9,7 +9,7 @@ public class Revista extends DocFisico {
 	
 	@Column(name = "edicao")
 	private String edicao;
-	@Column(name = "fotografo")
+	@Column(name = "fotografo_principal", nullable = false)
 	private String fotografo;
 	
 	public Revista(String nome, String assunto, String descricao, String localizacao, String edicao, String fotografo) {

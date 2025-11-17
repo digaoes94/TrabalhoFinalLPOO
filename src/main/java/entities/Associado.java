@@ -7,11 +7,14 @@ import jakarta.persistence.*;
 
 public class Associado extends Visitante {
 
-	@Column(name = "matricula_do_associado")
+	@Column(name = "matricula_do_associado", nullable = false, unique = true)
 	private String matriculaAssociado;
 
-	@Column(name = "senha")
+	@Column(name = "senha", nullable = false)
 	private String senha;
+
+	public Associado() {
+	}
 
 	public Associado(Visitante vis, String matriculaAssociado, String senha) {
 		super(vis.getNome(), vis.getCpf(), vis.getEmail(), vis.getCelular());
@@ -25,11 +28,7 @@ public class Associado extends Visitante {
 		this.matriculaAssociado = matriculaAssociado;
 		this.senha = senha;
 	}
-
-	public Associado() {
-
-	}
-
+	
 	public String getMatriculaAssociado() {
 		return matriculaAssociado;
 	}
