@@ -1,55 +1,52 @@
 package entities;
 
-import jakarta.persistence.*;
-
-@MappedSuperclass
 public abstract class Documento {
-	
-	@Id 
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	protected long id;
-	// AS CLASSES HERDEIRAS TAMBÉM HERDARÃO OS ID'S
-	
-	@Column(nullable = false) 
-	private String nome;
-	
-	@Column(length = 500) // AUMENTA O TAMANHO PARA POSSÍVEIS DESCRIÇÕES LONGAS
-    private String descricao;
-	
-	private String assunto;
-	
-	public Documento() {		
-	}
-	
-	
-	public Documento(String nome, String assunto, String descricao) {
+	private int id;
+	private String nome, genero, descricao, localizacao;
+
+	public Documento(int id, String nome, String genero, String descricao, String localizacao) {
+		this.id = id;
 		this.nome = nome;
-		this.assunto = assunto;
+		this.genero = genero;
 		this.descricao = descricao;
+		this.localizacao = localizacao;
 	}
 
 	public String getNome() {
 		return nome;
 	}
-
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
-	public String getAssunto() {
-		return assunto;
+	public String getGenero() {
+		return genero;
 	}
-
-	public void setAssunto(String assunto) {
-		this.assunto = assunto;
+	public void setGenero(String genero) {
+		this.genero = genero;
 	}
 
 	public String getDescricao() {
 		return descricao;
 	}
-
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+
+	public String getLocalizacao() {
+		return localizacao;
+	}
+	public void setLocalizacao(String localizacao) {
+		this.localizacao = localizacao;
+	}
 	
+	@Override
+	public String toString() {
+		return "Documento [id=" + id + ", nome=" + nome + ", genero=" + genero + ", descricao=" + descricao
+				+ ", localizacao=" + localizacao + "]";
+	}
+
+	public Emprestimo[] verEmprestimos() {
+		return bancoDados.findAll(id);
+	}
 }
