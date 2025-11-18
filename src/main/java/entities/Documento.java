@@ -1,15 +1,27 @@
 package entities;
 
-public abstract class Documento {
-	private int id;
-	private String nome, genero, descricao, localizacao;
+import java.util.ArrayList;
 
-	public Documento(int id, String nome, String genero, String descricao, String localizacao) {
-		this.id = id;
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+public abstract class Documento {
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) protected int id;
+	
+	@Column(nullable = false) private String nome;
+	private String genero, descricao, localizacao;
+
+	public Documento(String nome, String genero, String descricao, String localizacao) {
 		this.nome = nome;
 		this.genero = genero;
 		this.descricao = descricao;
 		this.localizacao = localizacao;
+	}
+
+	public int getId() {
+		return id;
 	}
 
 	public String getNome() {
@@ -46,7 +58,7 @@ public abstract class Documento {
 				+ ", localizacao=" + localizacao + "]";
 	}
 
-	public Emprestimo[] verEmprestimos() {
+	public ArrayList<Emprestimo> verEmprestimos() {
 		return bancoDados.findAll(id);
 	}
 }

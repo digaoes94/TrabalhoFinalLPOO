@@ -2,12 +2,9 @@ package entities;
 
 import jakarta.persistence.*;
 
-@MappedSuperclass
 public abstract class Pessoa {
 	
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected Long id; // 'protected' PARA QUE AS FILHAS TAMBÉM ACESSEM O ID
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) protected int id;
 
     @Column(nullable = false)
     private String nome;
@@ -22,10 +19,6 @@ public abstract class Pessoa {
 		this.email = email;
 		this.celular = celular;
 	}
-	
-	public Pessoa() {
-		
-	}
 
 	public String getNome() {
 		return nome;
@@ -36,9 +29,6 @@ public abstract class Pessoa {
 
 	public String getCpf() {
 		return cpf;
-	}
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
 	}
 
 	public String getEmail() {

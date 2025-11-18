@@ -1,11 +1,17 @@
 package entities; 
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "revistas")
 public class Revista extends Documento implements DocFisico {
-	private String fotografo;
-	private int edicao;
+	@Column(nullable = false) private String fotografo;
+	@Column(nullable = false) private int edicao;
 	
-	public Revista(int id, String nome, String genero, String descricao, String localizacao, String fotografo, int edicao) {
-		super(id, nome, genero, descricao, localizacao);
+	public Revista(String nome, String genero, String descricao, String localizacao, String fotografo, int edicao) {
+		super(nome, genero, descricao, localizacao);
 		this.fotografo = fotografo;
 		this.edicao = edicao;
 	}

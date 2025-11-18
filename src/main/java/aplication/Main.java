@@ -13,12 +13,14 @@ public class Main {
 
 			System.out.println(">>> SUCESSO! Conexao estabelecida.");
 			System.out.println(">>> Verifique seu MySQL Workbench para ver as tabelas criadas.");
-
-			// Fecha a fábrica de conexões
-			JPAUtil.close();
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			System.err.println(">>> FALHA! Erro ao iniciar o Hibernate.");
 			e.printStackTrace();
+		}
+		finally {
+			// Fecha a fábrica de conexões
+			JPAUtil.close();
 		}
 	}
 }
