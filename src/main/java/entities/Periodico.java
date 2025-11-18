@@ -1,10 +1,17 @@
 package entities;
 
-public class Periodico extends Documento implements DocFisico {
-	private String revisor, area, subarea;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
-	public Periodico(int id, String nome, String genero, String descricao, String localizacao, String revisor, String area, String subarea) {
-		super(id, nome, genero, descricao, localizacao);
+@Entity
+@Table(name = "periodicos")
+public class Periodico extends Documento implements DocFisico {
+	@Column(nullable = false) private String revisor;
+	private String area, subarea;
+
+	public Periodico(String nome, String genero, String descricao, String localizacao, String revisor, String area, String subarea) {
+		super(nome, genero, descricao, localizacao);
 		this.revisor = revisor;
 		this.area = area;
 		this.subarea = subarea;

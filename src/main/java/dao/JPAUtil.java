@@ -5,9 +5,7 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
 public class JPAUtil {
-
 	private static final String PERSISTENCE_UNIT_NAME = "bibliotecadb";
-
 	private static EntityManagerFactory factory;
 
 	/**

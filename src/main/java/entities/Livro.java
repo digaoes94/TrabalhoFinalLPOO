@@ -1,10 +1,16 @@
 package entities;
 
-public class Livro extends Documento implements DocFisico {
-	private String autor;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
-	public Livro(int id, String nome, String genero, String descricao, String localizacao, String autor) {
-		super(id, nome, genero, descricao, localizacao);
+@Entity
+@Table(name = "livros")
+public class Livro extends Documento implements DocFisico {
+	@Column(nullable = false) private String autor;
+
+	public Livro(String nome, String genero, String descricao, String localizacao, String autor) {
+		super(nome, genero, descricao, localizacao);
 		this.autor = autor;
 	}
 

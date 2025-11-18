@@ -1,10 +1,15 @@
 package entities;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "pdfs")
 public class PDF extends Documento implements DocDigital{
 	public static Boolean executavel = false;
 
-	public PDF(int id, String nome, String genero, String descricao, String localizacao) {
-		super(id, nome, genero, descricao, localizacao);
+	public PDF(String nome, String genero, String descricao, String localizacao) {
+		super(nome, genero, descricao, localizacao);
 	}
 
 	public static Boolean getExecutavel() {

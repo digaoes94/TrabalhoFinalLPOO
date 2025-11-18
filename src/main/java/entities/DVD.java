@@ -1,10 +1,15 @@
 package entities;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "dvds")
 public class DVD extends Documento implements DocDigital{
 	public static Boolean executavel = true;
 
-	public DVD(int id, String nome, String genero, String descricao, String localizacao) {
-		super(id, nome, genero, descricao, localizacao);
+	public DVD(String nome, String genero, String descricao, String localizacao) {
+		super(nome, genero, descricao, localizacao);
 	}
 
 	public static Boolean getExecutavel() {
