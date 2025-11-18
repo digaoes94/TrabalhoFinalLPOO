@@ -1,18 +1,34 @@
 package entities;
 
-import jakarta.persistence.*;
+public class PDF extends Documento implements DocDigital{
+	public static Boolean executavel = false;
 
-@Entity //MARCA COMO UMA ENTIDADE JPA E SERÁ A TABELA PRINCIPAL
-@Table(name = "pdf")  
-public class PDF extends DocDigital{
+	public PDF(int id, String nome, String genero, String descricao, String localizacao) {
+		super(id, nome, genero, descricao, localizacao);
+	}
 
-	public PDF(String nome, String assunto, String descricao, boolean playable) {
-		super(nome, assunto, descricao, playable);
-		
+	public static Boolean getExecutavel() {
+		return executavel;
+	}
+
+	@Override
+	public String toString() {
+		return "PDF [getNome()=" + getNome() + ", getGenero()=" + getGenero() + ", getDescricao()=" + getDescricao()
+				+ ", getLocalizacao()=" + getLocalizacao() + ", toString()=" + super.toString() + "]";
 	}
 	
-	public PDF() {
-		
+	public PDF pesquisarPDF(int id) {
+		return bancoDados.findById(id);
+	}
+	public boolean adicionarPDF(PDF pdf) {
+		return bancoDados.add(pdf);
+	}
+	public boolean excluirPDF(int id) {
+		return bancoDados.delete(pesquisarPDF(id));
 	}
 
+	@Override
+	public void executar() {
+		System.out.println("Abrindo o PDF no Adobe Acrobat.");
+	}
 }
