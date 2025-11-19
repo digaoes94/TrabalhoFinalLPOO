@@ -17,7 +17,6 @@ public class Funcionario extends Pessoa {
 	public String getMatriculaFuncionario() {
 		return matriculaFuncionario;
 	}
-
 	public void setMatriculaFuncionario(String matriculaFuncionario) {
 		this.matriculaFuncionario = matriculaFuncionario;
 	}
@@ -25,6 +24,44 @@ public class Funcionario extends Pessoa {
 	@Override
 	public String toString() {
 		return super.toString() + " Funcionario [matriculaFuncionario=" + matriculaFuncionario + "]";
+	}
+	
+	public Visitante pesquisarVisitante(int id) {
+		return bancoDados.findById(id);
+	}
+	public boolean adicionarVisitante(Visitante vis) {
+		return bancoDados.add(vis);
+	}
+	public boolean alterarVisitante(int id) {
+		return bancoDados.update(id);
+	}
+	public boolean excluirVisitante(int id) {
+		return bancoDados.delete(id);
+	}
+	
+	public Associado pesquisarAssociado(int id) {
+		return bancoDados.findById(id);
+	}
+	public boolean adicionarAssociado(Visitante vis, String matricula, String senha) {
+		Associado a = new Associado(vis, matricula, senha);
+		return bancoDados.add(a);
+	}
+	public boolean adicionarAssociado(Associado ass) {
+		return bancoDados.add(ass);
+	}
+	public boolean alterarAssociado(int id) {
+		return bancoDados.update(id);
+	}
+	public boolean excluirAssociado(int id) {
+		return bancoDados.delete(id);
+	}
+	
+	private boolean registrarEmprestimo(Emprestimo emp) {
+		return bancoDados.add(emp);
+	}
+	private boolean registrarDevolucao(Emprestimo emp) {
+		//precisa ver se vai ter divida e adicionar se necessário
+		return bancoDados.delete(emp);
 	}
 
 }
