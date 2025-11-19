@@ -3,7 +3,6 @@ package entities;
 import jakarta.persistence.*;
 
 public abstract class Pessoa {
-	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) protected int id;
 
     @Column(nullable = false)

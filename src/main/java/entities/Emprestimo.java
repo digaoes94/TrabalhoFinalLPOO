@@ -1,6 +1,7 @@
 package entities;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.*;
 
@@ -37,7 +38,6 @@ public class Emprestimo {
 	public String getCpfMutuario() {
 		return cpfMutuario;
 	}
-
 	public void setCpfMutuario(String cpfMutuario) {
 		this.cpfMutuario = cpfMutuario;
 	}
@@ -45,7 +45,6 @@ public class Emprestimo {
 	public LocalDate getInicioEmprestimo() {
 		return inicioEmprestimo;
 	}
-
 	public void setInicioEmprestimo(LocalDate inicioEmprestimo) {
 		this.inicioEmprestimo = inicioEmprestimo;
 	}
@@ -53,7 +52,6 @@ public class Emprestimo {
 	public LocalDate getFimEmprestimo() {
 		return fimEmprestimo;
 	}
-
 	public void setFimEmprestimo(LocalDate fimEmprestimo) {
 		this.fimEmprestimo = fimEmprestimo;
 	}
@@ -61,7 +59,6 @@ public class Emprestimo {
 	public LocalDate getDataRealDevolucao() {
 		return dataRealDevolucao;
 	}
-
 	public void setDataRealDevolucao(LocalDate dataRealDevolucao) {
 		this.dataRealDevolucao = dataRealDevolucao;
 	}
@@ -69,9 +66,24 @@ public class Emprestimo {
 	public boolean isStatus() {
 		return status;
 	}
-
 	public void setStatus(boolean status) {
 		this.status = status;
+	}
+
+	@Override
+	public String toString() {
+		return "Emprestimo [id=" + id + ", cpfMutuario=" + cpfMutuario + ", inicioEmprestimo=" + inicioEmprestimo
+				+ ", fimEmprestimo=" + fimEmprestimo + ", dataRealDevolucao=" + dataRealDevolucao + ", status=" + status
+				+ "]";
+	}
+	
+	public Double calculaDivida() {
+		if(LocalDateTime.now().isBefore(this.fimEmprestimo) || LocalDateTime.now().isEqual(this.fimEmprestimo)) {
+			return 0.0;
+		}
+		else {
+			return 1.0 * days;
+		}
 	}
 
 }
