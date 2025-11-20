@@ -1,5 +1,6 @@
 package entities;
 
+import entities.interfaces.DocDigital;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
