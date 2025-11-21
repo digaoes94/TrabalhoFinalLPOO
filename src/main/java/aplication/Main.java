@@ -1,13 +1,18 @@
 package aplication;
 
+import java.sql.Connection;
+
 import dao.JPAUtil; // 
+import data.DB;
 
 public class Main {
+//	MAIN	---------------------------------------------------------------------------------------------------------------------------------------------------------------
 	public static void main(String[] args) {
 		//testeHibernate();
-		
+		Connection conn = DB.getConnection();
 		
 	}
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 	private static void testeHibernate() {
 		System.out.println("--- Iniciando teste de conexao Hibernate ---");
