@@ -4,8 +4,13 @@ import dao.JPAUtil; //
 
 public class Main {
 	public static void main(String[] args) {
-		System.out.println("--- Iniciando teste de conexao Hibernate ---");
+		//testeHibernate();
+		
+		
+	}
 
+	private static void testeHibernate() {
+		System.out.println("--- Iniciando teste de conexao Hibernate ---");
 		try {
 			// Esta linha força o Hibernate a ler o persistence.xml
 			// e gerar as tabelas (devido ao hbm2ddl.auto="update")
